@@ -35,5 +35,6 @@ env/
 # Security & Credentials
 .env
 .env.*
+!.env.example
 google_creds.json
 
