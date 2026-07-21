@@ -1,0 +1,39 @@
+# Outputs & Build Artifacts (대용량 생성물)
+outputs/
+reports/latest/
+
+# Assets Archived & Inbox (대용량 원본 파일 및 이미지/PDF)
+assets/archived/
+assets/inbox/
+
+# Knowledge Base (개인 지식 데이터 보호)
+kb/*
+!kb/theory/
+!kb/theory/sample_*.md
+!kb/practice/
+!kb/practice/sample_*.md
+!kb/README.md
+
+# Temporary Scratch
+scratch/
+
+# Python Cache & Virtual Environments
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# OS & Editor Settings
+.DS_Store
+*.code-workspace
+.vscode/
+.idea/
+
+# Security & Credentials
+.env
+.env.*
+google_creds.json
+
