@@ -1,4 +1,4 @@
-# Lectura (렉투라)
+# Lectura
 
 > **AI-Powered Knowledge Mining & Presentation Engineering System**  
 > 발표자, 교육자, 지식 생산자를 위한 지식 자산 마이닝 및 멀티채널 슬라이드 엔지니어링 시스템
