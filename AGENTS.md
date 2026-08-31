@@ -11,6 +11,8 @@ Lectura는 발표자, 교육자, 지식 생산자와 협력하여 지식 자산�
 ### 필수 정책 지연 로딩 표 (Lazy-Loading Policy Table)
 작업 트리거 발생 시 아래 링크된 정책 전용 문서를 지연 로딩하여 엄수합니다.
 
+**[Discovery Bootstrap 예외]**: 작업 초기 대상 경로 식별을 위한 최소 탐색 작업(`pwd`, `list_dir`, `grep_search`, Serena 활성화 및 강사 프롬프트에 직접 지정된 파일 확인)은 정책 독해 전 실행할 수 있습니다. 단, 이 예외는 파일 경로 식별에만 국한되며 빌드, 테스트, 파일 수정, 외부 쓰기 작업에는 절대 적용되지 않습니다.
+
 | 작업 영역 / 트리거 조건 | 필수 참조 지연 로딩 정책 문서 |
 | :--- | :--- |
 | **슬라이드 화면 설계 / design.md 12항목 / Slide Model 13대 스키마** | [슬라이드 디자인 표준 명세](docs/agent-policy/slide-design-spec.md) |
@@ -50,9 +52,9 @@ Lectura는 발표자, 교육자, 지식 생산자와 협력하여 지식 자산�
 ## 3.5 모델 적합성 점검 및 위험도 라우팅 (사전 게이트)
 
 - **사전 분석 의무**: 모든 구현·수정 작업 전 위험도(High/Medium/Low)와 추론 난이도를 분석하여 모델 수준을 선판단합니다. (상세 정책: [`docs/agent-policy/model-routing.md`](docs/agent-policy/model-routing.md))
-- **고위험 작업 착수 금지 (Critical)**: 강의안 설계, `slide_model.json` 스키마, 렌더링 엔진 등 고위험 작업은 상위 추론 모델의 사전 분석 없이 실질적인 파일 수정을 시작하지 않습니다.
+- **고위험 작업 착수 금지 (Critical)**: 고위험 작업(예: 강의안 설계, `slide_model.json` 13대 스키마, 파이프라인 엔진, 렌더러, 공통 템플릿/전역 스타일, 보안 등 전체 범위는 [`docs/agent-policy/model-routing.md`](docs/agent-policy/model-routing.md) 기준)은 상위 추론 모델의 사전 분석 없이 실질적인 파일 수정을 시작하지 않습니다.
 - **상위 모델 부재 시 Fallback & Override**: 자동 전환 불가 환경의 고위험 작업은 강사에게 제한 사항을 선보고하며, 강사의 명시적 승인(Override) 전에는 수정을 착수하지 않습니다. Override 시 로그 기록 및 엄격한 보완 검증을 수행합니다.
-- **증거 기반 사후 검증**: 실질적 변경 완료 후 반드시 상위 검증 모델의 스크립트 실행(`validate.py`, `validate_slide_design.py`) 및 렌더링 결과 기반 `PASS` 판정을 확인합니다.
+- **증거 기반 사후 검증**: 실질적 변경 완료 후 반드시 독립 상위 검증 모델의 `PASS` 판정을 확인합니다. 상위 검증 불가 환경에서는 강사의 명시적 승인(Override)과 문서화된 단일 세션 보상 검증(Self Compensatory Verification)을 거쳐야만 완료할 수 있으며, 보상 검증 PASS를 독립 상위 검증 PASS로 허위 보고하는 행위를 엄격히 금지합니다.
 
 ---
 
